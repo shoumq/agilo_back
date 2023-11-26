@@ -13,6 +13,11 @@ class GroupController extends Controller
         return response()->json(Group::where('user_id', $user_id)->get());
     }
 
+    public function getAllGroups(): JsonResponse
+    {
+        return response()->json(Group::all());
+    }
+
     public function createGroup(Request $request): JsonResponse
     {
         $request->validate([

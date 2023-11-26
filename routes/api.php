@@ -28,10 +28,12 @@ Route::post('edit_profile', [UserController::class, 'edit']);
 
 Route::post('create_group', [GroupController::class, 'createGroup']);
 Route::get('get_groups/{user_id}', [GroupController::class, 'getGroups']);
+Route::get('get_all_groups', [GroupController::class, 'getAllGroups']);
 
 Route::post('create_password/{sector_id}', [PasswordController::class, 'createPassword']);
 Route::get('get_passwords/{sector_id}', [PasswordController::class, 'getPasswords']);
 Route::get('get_password/{pass_id}', [PasswordController::class, 'getPassword']);
+Route::post('edit_password', [PasswordController::class, 'editPassword']);
 
 Route::group([
     'middleware' => 'api',

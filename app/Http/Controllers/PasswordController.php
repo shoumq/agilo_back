@@ -30,12 +30,25 @@ class PasswordController extends Controller
             'title' => ['string', 'min:2', 'max:50']
         ]);
 
-        $group = new Password();
-        $group->user_id = $request->user_id;
-        $group->group_id = $sector_id;
-        $group->title = $request->title;
-        $group->save();
+        $password = new Password();
+        $password->user_id = $request->user_id;
+        $password->group_id = $sector_id;
+        $password->title = $request->title;
+        $password->save();
 
-        return response()->json($group);
+        return response()->json($password);
+    }
+
+    public function editPassword(Request $request): JsonResponse
+    {
+        $request->validate([
+            'title' => ['string', 'min:2', 'max:50']
+        ]);
+
+        $password = Password::find($request->id);
+        $password->title = $request->title;
+        $password->save();
+
+        return response()->json($password);
     }
 }
